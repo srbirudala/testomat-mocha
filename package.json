@@ -1,0 +1,52 @@
+{
+  "name": "automation-core-microservices",
+  "author": "Rakesh Pareek",
+  "version": "36.2.0",
+  "private": true,
+  "scripts": {
+    "help": "node -e \"const help = require('./config/help.js'); help.commandArguments(); help.currentVersions();\"",
+    "loadData": "node ./data/data-loader/emailDataLoader.js --$npm_config_env $npm_config_clioptions && node ./data/data-loader/phoneDataLoader.js --$npm_config_env $npm_config_clioptions && node ./data/data-loader/mfaDataLoader.js --$npm_config_env $npm_config_clioptions",
+    "auth-tests": "npm run loadData && mocha --reporter=xunit --reporter-options output=./reports/auth-apis.xml ./test/Identity-V2/Authentication-Apis --recursive --$npm_config_env $npm_config_clioptions",
+    "manage-tests": "npm run loadData && mocha --reporter=xunit --reporter-options output=./reports/manage-apis.xml ./test/Identity-V2/Management-Apis --recursive --signature preferred --$npm_config_env $npm_config_clioptions"
+  },
+  "description": "This project includes the automation script for LoginRadius Identity Version-2 APIs and Version-1. Loginradius v2 identity has three micro-services.\r The automation is build in Nodejs programming language using `mocha` as a design framework and `supertest` for http protocol.\r - `chaijs` is used as assertion library",
+  "main": ".mocharc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/loginradius/product/hubble/automation-core-microservices.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/loginradius/product/hubble/automation-core-microservices/issues"
+  },
+  "homepage": "https://gitlab.com/loginradius/product/hubble/automation-core-microservices#readme",
+  "dependencies": {
+    "assert": "^1.3.0",
+    "axios": "^1.6.8",
+    "chai": "3.5.0",
+    "chai-subset": "^1.6.0",
+    "chance": "^1.1.11",
+    "cheerio": "^0.22.0",
+    "crypto-js": "^4.1.1",
+    "debug": "4.3.4",
+    "deep-diff": "^1.0.2",
+    "dotenv": "^16.5.0",
+    "fs": "0.0.2",
+    "jwt-decode": "^3.1.2",
+    "log-symbols": "^2.2.0",
+    "mocha.parallel": "^0.15.6",
+    "mochawesome": "7.1.3",
+    "path": "^0.12.7",
+    "speakeasy": "2.0.0",
+    "supertest": "6.3.3",
+    "twilio": "2.11.1",
+    "underscore": "1.13.6",
+    "winston": "^3.0.0",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@testomatio/reporter": "^1.6.15",
+    "check-tests": "^0.10.6-beta-tests-update-id",
+    "mocha": "^10.2.0"
+  }
+}

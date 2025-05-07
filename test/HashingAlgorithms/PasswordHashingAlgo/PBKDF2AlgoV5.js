@@ -9,7 +9,7 @@ lib.runSuite('pbkdf2AlgoVersion5:', function () {
     it('\n3. Verify Change Password and Authentication by new password.', function (done) {
     });
 
-    it('\n4. Verify with depricated Change Password and Authentication by new password.', function (done) {
+    it('\n4. Verify with depricated Change Password and Authentication by new password. @T05be2b49', function (done) {
     });
 
 });
